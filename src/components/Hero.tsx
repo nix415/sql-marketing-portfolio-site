@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -69,13 +70,13 @@ export default function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3 hero-rise"
             style={{ "--hero-delay": "320ms" } as CSSProperties}
           >
-            <a
-              href="#analyses"
+            <Link
+              to="/analyses"
               className="press inline-flex items-center gap-2 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-bg)] px-5 py-2.5 text-sm font-medium hover:bg-[color:var(--color-accent)] transition-colors"
             >
               View analyses
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
             <a
               href={SITE.about.repo}
               target="_blank"

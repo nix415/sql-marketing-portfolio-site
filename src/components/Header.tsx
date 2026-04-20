@@ -1,24 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
 import { SITE } from "../data/site";
-import { useActiveSection } from "../hooks/useActiveSection";
 
-const SECTION_IDS: Record<string, string> = {
-  Overview: "overview",
-  Analyses: "analyses",
-  Dashboard: "dashboard",
-  Methodology: "methodology",
-  About: "about",
+const NAV_ROUTES: Record<string, string> = {
+  Overview: "/",
+  Analyses: "/analyses",
+  Dashboard: "/dashboard",
+  Methodology: "/methodology",
+  About: "/about",
 };
 
+function isRouteActive(currentPath: string, targetPath: string): boolean {
+  if (targetPath === "/") return currentPath === "/";
+  return currentPath === targetPath || currentPath.startsWith(targetPath + "/");
+}
+
 export default function Header() {
-  const location = useLocation();
-  const onLanding = location.pathname === "/";
-  const navIds = SITE.nav.map((item) => SECTION_IDS[item] ?? item.toLowerCase());
-  const active = useActiveSection(onLanding ? navIds : []);
+  const { pathname } = useLocation();
 
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-[color:var(--color-bg)]/80">
-      <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
+      <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between gap-4">
         <Link
           to="/"
           className="press flex items-baseline gap-2 group"
@@ -29,15 +30,16 @@ export default function Header() {
             / SQL · marketing
           </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+
+        <nav className="flex items-center gap-4 md:gap-6 text-sm overflow-x-auto">
           {SITE.nav.map((item) => {
-            const id = SECTION_IDS[item] ?? item.toLowerCase();
-            const isActive = onLanding && active === id;
+            const to = NAV_ROUTES[item] ?? "/";
+            const isActive = isRouteActive(pathname, to);
             return (
-              <a
+              <Link
                 key={item}
-                href={onLanding ? `#${id}` : `/#${id}`}
-                className={`relative press transition-colors ${
+                to={to}
+                className={`relative press whitespace-nowrap transition-colors ${
                   isActive
                     ? "text-[color:var(--color-ink)] font-medium"
                     : "text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
@@ -49,7 +51,7 @@ export default function Header() {
                     isActive ? "w-4 opacity-100" : "w-0 opacity-0"
                   }`}
                 />
-              </a>
+              </Link>
             );
           })}
         </nav>
