@@ -2,12 +2,11 @@ import type { CSSProperties } from "react";
 import { SITE } from "../data/site";
 
 export default function About() {
-  const { body, email, github, linkedin, portfolio } = SITE.about;
+  const { body, email, github, linkedin } = SITE.about;
   const links = [
     { label: "Email", value: email, href: `mailto:${email}` },
     { label: "GitHub", value: "github.com/nix415", href: github },
     { label: "LinkedIn", value: "linkedin.com/in/nixontse", href: linkedin },
-    { label: "Main portfolio", value: "nix415.vercel.app", href: portfolio },
   ];
 
   return (
