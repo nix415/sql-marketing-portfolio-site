@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import PageHeader from "../components/PageHeader";
 import AnalysisCard from "../components/AnalysisCard";
+import NextPageArrow from "../components/NextPageArrow";
 import { ANALYSES } from "../data/analyses";
 
 export default function AnalysesPage() {
@@ -28,6 +29,7 @@ export default function AnalysesPage() {
           ))}
         </div>
       </div>
+      <NextPageArrow to="/dashboard" label="Dashboard" />
     </>
   );
 }

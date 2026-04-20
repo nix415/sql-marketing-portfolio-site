@@ -1,8 +1,8 @@
 export const SITE = {
   name: "Nixon Tse",
-  shortTitle: "SQL Marketing Analytics",
+  shortTitle: "Marketing Analytics in SQL",
   tagline:
-    "Five SQL analyses on a 1,000-customer dataset — the questions a growth or marketing analytics team asks every week.",
+    "Five marketing analyses on a 1,000-customer dataset, written in SQL — the questions a growth or lifecycle team asks every week.",
   nav: ["Overview", "Analyses", "Dashboard", "Methodology", "About"] as const,
 
   kpis: [

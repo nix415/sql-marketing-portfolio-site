@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import PageHeader from "../components/PageHeader";
 import Methodology from "../components/Methodology";
+import NextPageArrow from "../components/NextPageArrow";
 
 export default function MethodologyPage() {
   return (
@@ -16,6 +17,7 @@ export default function MethodologyPage() {
       >
         <Methodology />
       </div>
+      <NextPageArrow to="/about" label="About" />
     </>
   );
 }

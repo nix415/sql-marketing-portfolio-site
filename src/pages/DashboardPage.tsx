@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import PageHeader from "../components/PageHeader";
 import Dashboard from "../components/Dashboard";
+import NextPageArrow from "../components/NextPageArrow";
 
 export default function DashboardPage() {
   return (
@@ -16,6 +17,7 @@ export default function DashboardPage() {
       >
         <Dashboard />
       </div>
+      <NextPageArrow to="/methodology" label="Methodology" />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { SITE } from "../data/site";
+import HeroVisual from "./HeroVisual";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -14,8 +14,6 @@ function GithubIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-import { SITE } from "../data/site";
-import HeroVisual from "./HeroVisual";
 
 export default function Hero() {
   return (
@@ -52,7 +50,7 @@ export default function Hero() {
             className="display text-4xl md:text-[3.25rem] leading-[1.05] hero-rise max-w-[36rem]"
             style={{ "--hero-delay": "120ms" } as CSSProperties}
           >
-            Five SQL analyses that answer the questions a{" "}
+            Five marketing analyses that answer the questions a{" "}
             <span className="text-[color:var(--color-accent)]">
               growth team
             </span>{" "}
@@ -62,21 +60,14 @@ export default function Hero() {
             className="mt-6 text-base md:text-lg leading-relaxed text-[color:var(--color-muted)] max-w-[34rem] hero-rise"
             style={{ "--hero-delay": "200ms" } as CSSProperties}
           >
-            Acquisition mix, funnel conversion, cohort retention, revenue
-            ROI, and RFM segmentation — all written from scratch in SQLite,
-            on a 1,000-customer marketing dataset.
+            Acquisition, funnel conversion, cohort retention, revenue ROI, and
+            RFM segmentation — five analyses on a 1,000-customer dataset,
+            written from scratch in SQL.
           </p>
           <div
             className="mt-8 flex flex-wrap items-center gap-3 hero-rise"
             style={{ "--hero-delay": "320ms" } as CSSProperties}
           >
-            <Link
-              to="/analyses"
-              className="press inline-flex items-center gap-2 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-bg)] px-5 py-2.5 text-sm font-medium hover:bg-[color:var(--color-accent)] transition-colors"
-            >
-              View analyses
-              <ArrowRight className="h-4 w-4" />
-            </Link>
             <a
               href={SITE.about.repo}
               target="_blank"

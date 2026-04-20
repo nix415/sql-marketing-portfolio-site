@@ -97,45 +97,80 @@ body {
   transform: scale(0.97);
 }
 
-/* ── Hero visualization (animated chart in hero) ────────────── */
-@keyframes hv-dot-pulse {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.25); }
+/* ── Hero visualization (rotating findings) ─────────────────── */
+@keyframes hv-bar-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
-.hv-dot {
-  display: block;
-  width: 6px;
-  height: 6px;
-  justify-self: center;
-  align-self: center;
-  animation: hv-dot-pulse 3.4s ease-in-out infinite;
+.hv-bar-fill {
+  transform-origin: left center;
+  animation: hv-bar-fill 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
-@keyframes hv-bar-rise {
-  0%, 100% { height: var(--base, 30%); }
-  50% { height: var(--peak, 70%); }
+
+@keyframes hv-row-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.hv-bar {
-  height: var(--base, 30%);
-  animation-name: hv-bar-rise;
-  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
-  animation-iteration-count: infinite;
+.hv-row {
+  animation: hv-row-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
-@keyframes hv-trend-draw {
-  0% { stroke-dashoffset: 200; }
-  60% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 0; }
+
+@keyframes hv-label-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.hv-trend {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: hv-trend-draw 7s ease-in-out infinite;
+.hv-label-fade {
+  animation: hv-label-fade 0.55s ease-out both;
 }
+
 @keyframes hv-live-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 .hv-pulse > span:first-child {
   animation: hv-live-pulse 1.6s ease-in-out infinite;
+}
+
+/* ── Floating next-page arrow ───────────────────────────────── */
+@keyframes page-arrow-nudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+.page-arrow-nudge {
+  animation: page-arrow-nudge 1.8s ease-in-out infinite;
+}
+@keyframes page-arrow-appear {
+  from {
+    opacity: 0;
+    transform: translate(12px, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+.page-arrow {
+  animation: page-arrow-appear 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s backwards;
 }
 
 /* ── KPI animated counter underline ─────────────────────────── */
@@ -206,16 +241,19 @@ body {
   .stagger-item,
   .hero-rise,
   .press,
-  .hv-dot,
-  .hv-bar,
-  .hv-trend,
+  .hv-bar-fill,
+  .hv-row,
+  .hv-label-fade,
   .hv-pulse > span:first-child,
-  .kpi-underline {
+  .kpi-underline,
+  .page-arrow,
+  .page-arrow-nudge {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
     transition: none !important;
   }
-  .hv-bar { height: 60% !important; }
-  .hv-trend { stroke-dashoffset: 0 !important; }
+  .hv-bar-fill {
+    transform: scaleX(1) !important;
+  }
 }

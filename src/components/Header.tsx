@@ -27,7 +27,7 @@ export default function Header() {
         >
           <span className="display text-lg tracking-tight">{SITE.name}</span>
           <span className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-muted)] group-hover:text-[color:var(--color-accent)] transition-colors">
-            / SQL · marketing
+            / marketing analytics · SQL
           </span>
         </Link>
 

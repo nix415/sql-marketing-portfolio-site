@@ -1,4 +1,4 @@
-# SQL Marketing Analytics — Portfolio Site
+# Marketing Analytics in SQL — Portfolio Site
 
 A React + TypeScript portfolio showcasing five SQL analyses on a 1,000-row
 customer marketing dataset:
