@@ -84,13 +84,9 @@ export default function HeroVisual() {
       />
 
       {/* Top label */}
-      <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-[10px] tracking-[0.25em] uppercase text-[color:var(--color-muted)]">
-        <span key={`label-${view.id}`} className="hv-label-fade">
+      <div className="absolute top-5 left-5 right-5 text-[10px] tracking-[0.25em] uppercase text-[color:var(--color-muted)]">
+        <span key={`label-${view.id}`} className="hv-label-fade inline-block">
           {view.title}
-        </span>
-        <span className="hv-pulse inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-accent)]" />
-          live
         </span>
       </div>
 

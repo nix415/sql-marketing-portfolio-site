@@ -34,12 +34,9 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="mx-auto max-w-6xl px-6 py-10 text-xs text-[color:var(--color-muted)] flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[color:var(--color-line)] mt-10">
+      <footer className="mx-auto max-w-6xl px-6 py-10 text-xs text-[color:var(--color-muted)] border-t border-[color:var(--color-line)] mt-10">
         <span>
           © {new Date().getFullYear()} {SITE.name}
-        </span>
-        <span className="mono">
-          built with React · TypeScript · Tailwind · deployed on Vercel
         </span>
       </footer>
     </>

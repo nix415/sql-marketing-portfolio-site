@@ -44,7 +44,7 @@ export default function Hero() {
             className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)] mb-6 hero-rise"
             style={{ "--hero-delay": "0ms" } as CSSProperties}
           >
-            Portfolio · {SITE.shortTitle}
+            Kaggle · Customer Segmentation Data
           </p>
           <h1
             className="display text-4xl md:text-[3.25rem] leading-[1.05] hero-rise max-w-[36rem]"
@@ -61,8 +61,11 @@ export default function Hero() {
             style={{ "--hero-delay": "200ms" } as CSSProperties}
           >
             Acquisition, funnel conversion, cohort retention, revenue ROI, and
-            RFM segmentation — five analyses on a 1,000-customer dataset,
-            written from scratch in SQL.
+            RFM segmentation — five SQL analyses on Kaggle&rsquo;s{" "}
+            <em className="not-italic text-[color:var(--color-ink)]">
+              Customer Segmentation Data for Marketing Analysis
+            </em>{" "}
+            (1,000 customers), written from scratch.
           </p>
           <div
             className="mt-8 flex flex-wrap items-center gap-3 hero-rise"

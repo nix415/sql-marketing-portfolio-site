@@ -2,7 +2,7 @@ export const SITE = {
   name: "Nixon Tse",
   shortTitle: "Marketing Analytics in SQL",
   tagline:
-    "Five marketing analyses on a 1,000-customer dataset, written in SQL — the questions a growth or lifecycle team asks every week.",
+    "Five marketing analyses written in SQL on Kaggle's Customer Segmentation Data for Marketing Analysis — the questions a growth or lifecycle team asks every week.",
   nav: ["Overview", "Analyses", "Dashboard", "Methodology", "About"] as const,
 
   kpis: [
@@ -31,7 +31,7 @@ export const SITE = {
   ],
 
   about: {
-    body: "I'm Nixon — focused on growth marketing and marketing analytics. I built this portfolio to show recruiters how I'd approach the kind of questions a real growth or lifecycle team asks: where customers come from, where they fall out of the funnel, who's most worth keeping, and where revenue actually concentrates. Every query was written from scratch in SQLite and is documented like I'd document it on the job.",
+    body: "I'm Nixon — focused on growth marketing and marketing analytics. I took Kaggle's Customer Segmentation Data for Marketing Analysis (1,000 customers, 9 columns) and used SQL to answer the kind of questions a real growth or lifecycle team asks: where customers come from, where they fall out of the funnel, who's most worth keeping, and where revenue actually concentrates. Every query was written from scratch in SQLite and is documented like I'd document it on the job.",
     email: "nixontse1@gmail.com",
     github: "https://github.com/nix415",
     repo: "https://github.com/nix415/sql-marketing-portfolio-site",

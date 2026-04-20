@@ -25,9 +25,10 @@ export default function Methodology() {
   return (
     <div className="space-y-5">
       <p className="text-base text-[color:var(--color-muted)] max-w-prose">
-        The dataset has no event-stream, attribution columns, or signup
-        timestamps. To still apply real marketing-analytics frameworks,
-        each query maps existing fields to their marketing equivalents:
+        Kaggle&rsquo;s <em className="not-italic text-[color:var(--color-ink)]">Customer Segmentation Data for Marketing Analysis</em> has no event-stream,
+        attribution columns, or signup timestamps. To still apply real
+        marketing-analytics frameworks, each SQL query maps existing fields
+        to their marketing equivalents:
       </p>
       <ul className="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
         {MAPPINGS.map((m) => (

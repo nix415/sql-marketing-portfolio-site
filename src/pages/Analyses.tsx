@@ -10,7 +10,7 @@ export default function AnalysesPage() {
       <PageHeader
         eyebrow="Deep dives"
         title="Five analyses, one customer dataset."
-        description="Each analysis mirrors a real marketing reporting workflow — from where customers come from, through what they do, to who they're worth. Click any card for the business question, the SQL, techniques, and the takeaway."
+        description="Every analysis runs in SQL against Kaggle's Customer Segmentation Data for Marketing Analysis (1,000 customers). Each one mirrors a real marketing reporting workflow — from where customers come from, through what they do, to who they're worth. Click any card for the business question, the SQL, techniques, and the takeaway."
       />
       <div className="mx-auto max-w-6xl px-6 pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
