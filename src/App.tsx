@@ -2,34 +2,39 @@ import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Landing from "./pages/Landing";
-import AnalysesPage from "./pages/Analyses";
 import AnalysisDetail from "./pages/AnalysisDetail";
-import DashboardPage from "./pages/DashboardPage";
-import MethodologyPage from "./pages/MethodologyPage";
-import AboutPage from "./pages/AboutPage";
 import { SITE } from "./data/site";
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function ScrollToHash() {
+  const { pathname, hash, key } = useLocation();
+
   useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        // Defer to next frame so layout is settled (esp. after route change).
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        return;
+      }
+    }
     window.scrollTo({ top: 0, behavior: "auto" });
-  }, [pathname]);
+  }, [pathname, hash, key]);
+
   return null;
 }
 
 export default function App() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollToHash />
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/analyses" element={<AnalysesPage />} />
           <Route path="/analyses/:slug" element={<AnalysisDetail />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/methodology" element={<MethodologyPage />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<Landing />} />
         </Routes>
       </main>

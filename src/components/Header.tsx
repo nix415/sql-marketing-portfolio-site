@@ -1,21 +1,47 @@
-import { Link, useLocation } from "react-router-dom";
+import { useCallback } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SITE } from "../data/site";
+import { useActiveSection } from "../hooks/useActiveSection";
 
-const NAV_ROUTES: Record<string, string> = {
-  Overview: "/",
-  Analyses: "/analyses",
-  Dashboard: "/dashboard",
-  Methodology: "/methodology",
-  About: "/about",
+const SECTION_IDS: Record<string, string> = {
+  Overview: "overview",
+  Analyses: "analyses",
+  Dashboard: "dashboard",
+  Methodology: "methodology",
+  About: "about",
 };
 
-function isRouteActive(currentPath: string, targetPath: string): boolean {
-  if (targetPath === "/") return currentPath === "/";
-  return currentPath === targetPath || currentPath.startsWith(targetPath + "/");
-}
+const SECTION_ORDER = [
+  "overview",
+  "analyses",
+  "dashboard",
+  "methodology",
+  "about",
+];
 
 export default function Header() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const onLanding = pathname === "/";
+  const activeSection = useActiveSection(onLanding ? SECTION_ORDER : []);
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+      // If we're on landing, scroll smoothly. Otherwise let router push to /#id.
+      if (onLanding) {
+        e.preventDefault();
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", `#${sectionId}`);
+        }
+      } else {
+        e.preventDefault();
+        navigate(`/#${sectionId}`);
+      }
+    },
+    [onLanding, navigate],
+  );
 
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-[color:var(--color-bg)]/80">
@@ -24,6 +50,13 @@ export default function Header() {
           to="/"
           className="press flex items-baseline gap-2 group"
           aria-label="Home"
+          onClick={(e) => {
+            if (onLanding) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              history.replaceState(null, "", "/");
+            }
+          }}
         >
           <span className="display text-lg tracking-tight">{SITE.name}</span>
           <span className="text-xs uppercase tracking-[0.25em] text-[color:var(--color-muted)] group-hover:text-[color:var(--color-accent)] transition-colors">
@@ -33,12 +66,13 @@ export default function Header() {
 
         <nav className="flex items-center gap-4 md:gap-6 text-sm overflow-x-auto">
           {SITE.nav.map((item) => {
-            const to = NAV_ROUTES[item] ?? "/";
-            const isActive = isRouteActive(pathname, to);
+            const sectionId = SECTION_IDS[item] ?? "overview";
+            const isActive = onLanding && activeSection === sectionId;
             return (
-              <Link
+              <a
                 key={item}
-                to={to}
+                href={`/#${sectionId}`}
+                onClick={(e) => handleNavClick(e, sectionId)}
                 className={`relative press whitespace-nowrap transition-colors ${
                   isActive
                     ? "text-[color:var(--color-ink)] font-medium"
@@ -51,7 +85,7 @@ export default function Header() {
                     isActive ? "w-4 opacity-100" : "w-0 opacity-0"
                   }`}
                 />
-              </Link>
+              </a>
             );
           })}
         </nav>
