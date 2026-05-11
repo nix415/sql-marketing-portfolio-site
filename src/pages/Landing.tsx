@@ -86,7 +86,7 @@ export default function Landing() {
       >
         <PageHeader eyebrow="About" title="Who built this." />
         <div
-          className="mx-auto max-w-6xl px-6 pb-24 hero-rise"
+          className="mx-auto max-w-6xl px-6 pb-8 hero-rise"
           style={{ "--hero-delay": "220ms" } as CSSProperties}
         >
           <About />
